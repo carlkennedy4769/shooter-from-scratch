@@ -15,7 +15,11 @@ clock = pygame.time.Clock()
 FPS = 60
 
 #define game variables
-GRAVITY = 0.75
+GRAVITY = 0.25
+
+#load images
+#bullet
+bullet_img = pygame.image.load('img/imcons/bullet.png').convert_alpha
 
 #define player action variables
 moving_left = False
@@ -51,7 +55,7 @@ class Soldier(pygame.sprite.Sprite):
             temp_list = []
             num_of_frames = len(os.listdir(f'img/{self.char_type}/{animation}'))
             for i in range(num_of_frames):
-                img = pygame.image.load(f'img/{self.char_type}/{animation}/{i}.png')
+                img = pygame.image.load(f'img/{self.char_type}/{animation}/{i}.png').convert_alpha
                 img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
                 temp_list.append(img)
             self.animation_list.append(temp_list)
@@ -120,6 +124,8 @@ class Soldier(pygame.sprite.Sprite):
         
     def draw(self):
         screen.blit(pygame.transform.flip(self.image, self.flip, False), self.rect)
+
+class Bullet
         
 
 player = Soldier('player',200, 200, 3, 5)
